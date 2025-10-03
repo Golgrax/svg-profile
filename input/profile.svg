@@ -115,10 +115,7 @@
     </a>
   </g>
 
-  <g font-family="sans-serif" font-size="12" fill="#fff" text-anchor="start">
-    <text x="450" y="215">Commits (Last Year): <tspan font-weight="bold" fill="#A600FF">{{ GITHUB_COMMITS }}</tspan></text>
-    <text x="450" y="235">Pull Requests (Last Year): <tspan font-weight="bold" fill="#A600FF">{{ GITHUB_PRS }}</tspan></text>
-  </g>
+
 
   <g font-family="sans-serif" font-size="16" fill="#fff" text-anchor="middle">
     <text x="320" y="280">Followers</text>

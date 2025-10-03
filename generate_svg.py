@@ -14,28 +14,7 @@ def fetch_github_stats(username):
         return response.json()
     return None
 
-def fetch_contribution_stats(username):
-    token = os.environ.get("GH_TOKEN")
-    if not token:
-        return None
-    headers = {"Authorization": f"bearer {token}"}
-    query = '''
-    query($username: String!) {
-      user(login: $username) {
-        contributionsCollection {
-          totalCommitContributions
-          totalPullRequestContributions
-        }
-      }
-    }
-    '''
-    variables = {"username": username}
-    try:
-        response = requests.post("https://api.github.com/graphql", json={'query': query, 'variables': variables}, headers=headers)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException:
-        return None
+
 
 def get_pfp_as_base64(url):
     response = requests.get(url)
@@ -55,7 +34,7 @@ def calculate_grade(stats, starred_count):
     if score > 50: return ("E", "grade-c")
     return ("F", "grade-c")
 
-def generate_svg(stats, contrib_stats, username):
+def generate_svg(stats, username):
     with open("input/profile.svg", "r") as f:
         template = f.read()
 
@@ -110,16 +89,7 @@ def generate_svg(stats, contrib_stats, username):
     template = template.replace("{{ GITHUB_GRADE }}", grade_letter)
     template = template.replace("{{ GRADE_CLASS }}", grade_class)
 
-    # Contribution Stats
-    if contrib_stats and 'data' in contrib_stats and contrib_stats['data']['user']:
-        collection = contrib_stats['data']['user']['contributionsCollection']
-        commits = collection['totalCommitContributions']
-        prs = collection['totalPullRequestContributions']
-        template = template.replace("{{ GITHUB_COMMITS }}", str(commits))
-        template = template.replace("{{ GITHUB_PRS }}", str(prs))
-    else:
-        template = template.replace("{{ GITHUB_COMMITS }}", "N/A")
-        template = template.replace("{{ GITHUB_PRS }}", "N/A")
+    template += f"\n<!-- Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} -->"
 
     with open("output/profile.svg", "w") as f:
         f.write(template)
@@ -131,10 +101,10 @@ if __name__ == "__main__":
 
     username = sys.argv[1]
     github_stats = fetch_github_stats(username)
-    contribution_stats = fetch_contribution_stats(username)
 
     if github_stats:
-        generate_svg(github_stats, contribution_stats, username)
+        generate_svg(github_stats, username)
         print(f"Successfully generated output/profile.svg for {username}")
     else:
         print(f"Could not fetch stats for {username}")
+        sys.exit(1)
