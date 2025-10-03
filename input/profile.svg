@@ -1,0 +1,149 @@
+<svg width="100%" height="100%" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    @keyframes glow {
+      0% { fill: #A600FF; text-shadow: 0 0 4px #A600FF; }
+      50% { fill: #E0B3FF; text-shadow: 0 0 12px #E0B3FF; }
+      100% { fill: #A600FF; text-shadow: 0 0 4px #A600FF; }
+    }
+    .stat-value {
+      animation: glow 4s ease-in-out infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 2s ease-in-out 1;
+    }
+    @keyframes rainbow-text {
+      0% { fill: #ff0000; } 15% { fill: #ff7f00; } 30% { fill: #ffff00; } 45% { fill: #00ff00; } 60% { fill: #0000ff; } 75% { fill: #4b0082; } 90% { fill: #9400d3; } 100% { fill: #ff0000; }
+    }
+    .rainbow-char {
+      animation: rainbow-text 5s linear infinite;
+    }
+    .rainbow-char:nth-child(1) { animation-delay: 0s; }
+    .rainbow-char:nth-child(2) { animation-delay: 0.2s; }
+    .rainbow-char:nth-child(3) { animation-delay: 0.4s; }
+    .rainbow-char:nth-child(4) { animation-delay: 0.6s; }
+    .rainbow-char:nth-child(5) { animation-delay: 0.8s; }
+
+    /* Grade Circle Animation */
+    @keyframes draw-circle {
+      from { stroke-dashoffset: 157; }
+      to { stroke-dashoffset: 0; }
+    }
+    .grade-circle {
+      stroke-dasharray: 157;
+      stroke-dashoffset: 157;
+      animation: draw-circle 2s 1s forwards;
+    }
+
+    /* Grade Color Animations */
+    @keyframes grade-s-anim { 0%, 100% { fill: #FFD700; } 50% { fill: #FFA500; } }
+    @keyframes grade-a-anim { 0%, 100% { fill: #32CD32; } 50% { fill: #98FB98; } }
+    @keyframes grade-b-anim { 0%, 100% { fill: #1E90FF; } 50% { fill: #87CEFA; } }
+    @keyframes grade-c-anim { 0%, 100% { fill: #A600FF; } 50% { fill: #E0B3FF; } }
+    .grade-s { animation: grade-s-anim 3s infinite; }
+    .grade-a { animation: grade-a-anim 3s infinite; }
+    .grade-b { animation: grade-b-anim 3s infinite; }
+    .grade-c, .grade-d, .grade-e, .grade-f { animation: grade-c-anim 3s infinite; }
+
+  </style>
+
+  <rect x="0" y="0" width="800" height="12" fill="#A600FF">
+    <animate attributeName="fill" values="#A600FF;#B00B69;#A600FF" dur="5s" repeatCount="indefinite" />
+  </rect>
+  
+  <rect x="0" y="388" width="800" height="12" fill="#A600FF">
+    <animate attributeName="fill" values="#A600FF;#B00B69;#A600FF" dur="5s" repeatCount="indefinite" />
+  </rect>
+
+  <rect x="50" y="20" width="700" height="360" rx="10" ry="10" fill="#1E1E1E" stroke="#A600FF" stroke-width="1.5"/>
+  
+  <rect x="60" y="50" width="680" height="320" fill="#1E1E1E" stroke="#A600FF" stroke-width="0.8"/>
+  
+  <polygon points="80,90 92,82 104,90 104,106 92,114 80,106" fill="#A600FF" opacity="0.8"/>
+  <polygon points="80,125 92,117 104,125 104,141 92,149 80,141" fill="#A600FF" opacity="0.6"/>
+  <polygon points="80,160 92,152 104,160 104,176 92,184 80,176" fill="#A600FF" opacity="0.8"/>
+  <polygon points="80,195 92,187 104,195 104,211 92,219 80,211" fill="#A600FF" opacity="0.6"/>
+  <polygon points="80,230 92,222 104,230 104,246 92,254 80,246" fill="#A600FF" opacity="0.8"/>
+  
+  <polygon points="115,93 123,98 115,103" fill="#A600FF" opacity="0.4"/>
+  <polygon points="115,128 123,133 115,138" fill="#A600FF" opacity="0.4"/>
+  <polygon points="115,163 123,168 115,173" fill="#A600FF" opacity="0.4"/>
+  <polygon points="115,198 123,203 115,208" fill="#A600FF" opacity="0.4"/>
+  <polygon points="115,233 123,238 115,243" fill="#A600FF" opacity="0.4"/>
+
+  <rect x="140" y="60" width="600" height="280" rx="5" ry="5" fill="#252526" stroke="#A600FF" stroke-width="0.8"/>
+  
+  <rect x="140" y="60" width="600" height="16" fill="#2D2D2D" stroke="#A600FF" stroke-width="0.4"/>
+  
+  <rect x="420" y="64" width="24" height="8" fill="#A600FF" opacity="0.8"/>
+  <rect x="455" y="64" width="24" height="8" fill="#B00B69" opacity="0.8"/>
+  <rect x="490" y="64" width="24" height="8" fill="#A600FF" opacity="0.8"/>
+  <rect x="525" y="64" width="24" height="8" fill="#B00B69" opacity="0.8"/>
+
+  <image href="{{ GITHUB_PFP_URL }}" x="160" y="90" width="100" height="100" />
+
+  <g transform="translate(160, 210)">
+    <text x="50" y="-12" font-family="sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Grade</text>
+    <circle cx="50" cy="25" r="25" fill="none" stroke="#A600FF" stroke-width="2" class="grade-circle"/>
+    <text x="50" y="33" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" class="{{ GRADE_CLASS }}">{{ GITHUB_GRADE }}</text>
+  </g>
+
+  <text x="280" y="110" font-family="sans-serif" font-size="22" fill="#A600FF">{{ GITHUB_NAME }}</text>
+  <text x="280" y="130" font-family="sans-serif" font-size="16" fill="#B00B69">@{{ GITHUB_USERNAME }}</text>
+  
+  <foreignObject x="280" y="140" width="440" height="50" class="fade-in">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: sans-serif; font-size: 12px; color: white; white-space: normal; word-wrap: break-word;">
+      {{ GITHUB_BIO }}
+    </div>
+  </foreignObject>
+
+  <g transform="translate(280, 195)" font-family="sans-serif" font-size="12" fill="#fff">
+    <a xlink:href="{{ GITHUB_BLOG_URL }}" target="_blank" display="{{ BLOG_DISPLAY }}">
+      <g transform="translate(0, 0)">
+          <path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83L5.17,10.83C4.78,10.44 4.78,9.81 5.17,9.42L9.17,5.42C9.56,5.03 10.2,5.03 10.59,5.42C11,5.81 11,6.44 10.59,6.83L7.71,9.71L18,9.71C18.55,9.71 19,10.16 19,10.71C19,11.26 18.55,11.71 18,11.71L7.71,11.71L10.59,13.41Z" fill="#fff" transform="scale(0.7)"/>
+          <text x="20" y="12">{{ GITHUB_BLOG_DISPLAY_URL }}</text>
+      </g>
+    </a>
+    <a xlink:href="{{ GITHUB_TWITTER_URL }}" target="_blank" display="{{ TWITTER_DISPLAY }}">
+      <g transform="translate(0, 20)">
+        <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.26C11.73,8.6 11.77,8.92 11.84,9.22C8.28,9.03 5.15,7.38 3,4.79C2.63,5.36 2.44,6.06 2.44,6.81C2.44,8.26 3.18,9.53 4.29,10.29C3.59,10.27 2.93,10.08 2.36,9.77V9.81C2.36,11.85 3.78,13.55 5.74,13.93C5.38,14.03 5,14.08 4.6,14.08C4.32,14.08 4.05,14.05 3.79,14C4.33,15.68 5.92,16.88 7.79,16.92C6.38,18.03 4.6,18.68 2.66,18.68C2.32,18.68 1.99,18.66 1.66,18.61C3.55,19.86 5.8,20.5 8.17,20.5C16,20.5 20.33,13.88 20.33,8.79C20.33,8.62 20.33,8.45 20.32,8.28C21.17,7.68 21.89,6.9 22.46,6Z" fill="#1DA1F2" transform="scale(0.7)"/>
+        <text x="20" y="12">{{ GITHUB_TWITTER_HANDLE }}</text>
+      </g>
+    </a>
+  </g>
+
+  <g font-family="sans-serif" font-size="12" fill="#fff" text-anchor="start">
+    <text x="450" y="215">Commits (Last Year): <tspan font-weight="bold" fill="#A600FF">{{ GITHUB_COMMITS }}</tspan></text>
+    <text x="450" y="235">Pull Requests (Last Year): <tspan font-weight="bold" fill="#A600FF">{{ GITHUB_PRS }}</tspan></text>
+  </g>
+
+  <g font-family="sans-serif" font-size="16" fill="#fff" text-anchor="middle">
+    <text x="320" y="280">Followers</text>
+    <text x="320" y="300" class="stat-value">{{ GITHUB_FOLLOWERS }}</text>
+
+    <text x="420" y="280">Repositories</text>
+    <text x="420" y="300" class="stat-value">{{ GITHUB_REPOS }}</text>
+
+    <text x="520" y="280">Stars</text>
+    <text x="520" y="300" class="stat-value">{{ GITHUB_STARS }}</text>
+
+    <text x="620" y="280">Gists</text>
+    <text x="620" y="300" class="stat-value">{{ GITHUB_GISTS }}</text>
+  </g>
+
+  <!-- Splash Screen -->
+  <g id="splash">
+    <polygon points="0,0 900,0 850,400 0,400" fill="#121212" />
+    <text x="400" y="210" font-family="sans-serif" font-size="90" text-anchor="middle">
+        <tspan class="rainbow-char">H</tspan>
+        <tspan class="rainbow-char">E</tspan>
+        <tspan class="rainbow-char">L</tspan>
+        <tspan class="rainbow-char">L</tspan>
+        <tspan class="rainbow-char">O</tspan>
+    </text>
+    <animateTransform attributeName="transform" type="translate" from="0 0" to="-950 0" begin="2.5s" dur="1s" fill="freeze" />
+  </g>
+</svg>
