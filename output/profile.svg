@@ -175,12 +175,12 @@
   <g font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle">
     <g transform="translate(185, 295)">
       <text x="0" y="0">Followers</text>
-      <text x="0" y="20" class="stat-value">15</text>
+      <text x="0" y="20" class="stat-value">16</text>
     </g>
 
     <g transform="translate(295, 295)">
       <text x="0" y="0">Repositories</text>
-      <text x="0" y="20" class="stat-value">120</text>
+      <text x="0" y="20" class="stat-value">119</text>
     </g>
 
     <g transform="translate(385, 295)">
